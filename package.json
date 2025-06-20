@@ -9,15 +9,15 @@
   },
   "scripts": {
     "build": "pnpm build-explore && pnpm build-checkout && pnpm build-decide && pnpm build-app",
-    "build-app": "WITH_ZE=true pnpm --filter=tractor_v2_app build",
-    "build-checkout": "WITH_ZE=true pnpm --filter=tractor_v2_checkout build",
-    "build-decide": "WITH_ZE=true pnpm --filter=tractor_v2_decide build",
-    "build-explore": "WITH_ZE=true pnpm --filter=tractor_v2_explore build",
-    "serve-app": "WITH_ZE=true pnpm --filter=tractor_v2_app serve",
-    "serve-checkout": "WITH_ZE=true pnpm --filter=tractor_v2_checkout serve",
-    "serve-decide": "WITH_ZE=true pnpm --filter=tractor_v2_decide serve",
-    "serve-explore": "WITH_ZE=true pnpm --filter=tractor_v2_explore serve",
-    "serve": "WITH_ZE=true pnpm --filter 'tractor_v2*' serve"
+    "build-app": "pnpm --filter=tractor_v2_app build",
+    "build-checkout": "pnpm --filter=tractor_v2_checkout build",
+    "build-decide": "pnpm --filter=tractor_v2_decide build",
+    "build-explore": "pnpm --filter=tractor_v2_explore build",
+    "serve-app": "pnpm --filter=tractor_v2_app serve",
+    "serve-checkout": "pnpm --filter=tractor_v2_checkout serve",
+    "serve-decide": "pnpm --filter=tractor_v2_decide serve",
+    "serve-explore": "pnpm --filter=tractor_v2_explore serve",
+    "serve": "pnpm --filter 'tractor_v2*' serve"
   },
   "keywords": [
     "react",
