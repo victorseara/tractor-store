@@ -2,8 +2,9 @@ import * as React from 'react';
 import LineItem from './components/LineItem';
 import Button from './components/Button';
 import data from './data/db.json';
-import { useLineItems } from './data/store';
 import './css/CartPage.css'
+import { useCartStore } from "./data/store";
+
 
 const Header = React.lazy(() => import('tractor_v2_explore/Header'));
 const Footer = React.lazy(() => import('tractor_v2_explore/Footer'));
@@ -20,7 +21,7 @@ function convertToLineItems(items: Array<{ sku: string; quantity: number }>) {
 }
 
 const CartPage: React.FC = () => {
-  const rawLineItems = useLineItems();
+  const rawLineItems = useCartStore();
   const lineItems = convertToLineItems(rawLineItems);
   const total = lineItems.reduce((res, { total }) => res + total, 0);
   const skus = lineItems.map(({ sku }) => sku);

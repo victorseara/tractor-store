@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { cartStore, useCartStore } from "tractor_v2_shared/stores";
 
-const store: Array<{ sku: string; quantity: number }> = [];
+const store = cartStore.get();
 
 window.addEventListener('add-to-cart', (ev: CustomEvent) => {
+  debugger
   const { sku } = ev.detail;
 
   const item = store.find((m) => m.sku === sku);
@@ -11,6 +12,7 @@ window.addEventListener('add-to-cart', (ev: CustomEvent) => {
     item.quantity++;
   } else {
     store.push({ sku, quantity: 1 });
+    cartStore.set(store)
   }
 
   window.dispatchEvent(new CustomEvent('updated-cart'));
@@ -23,25 +25,15 @@ window.addEventListener('remove-from-cart', (ev: CustomEvent) => {
 
   if (index >= 0) {
     store.splice(index, 1);
+    cartStore.set(store)
     window.dispatchEvent(new CustomEvent('updated-cart'));
   }
 });
 
 window.addEventListener('clear-cart', () => {
   store.splice(0, store.length);
+  cartStore.set(store)
   window.dispatchEvent(new CustomEvent('updated-cart'));
 });
 
-export function useLineItems() {
-  const [items, setItems] = useState(store);
-
-  useEffect(() => {
-    const refresh = () => setItems([...store]);
-    window.addEventListener('updated-cart', refresh);
-    return () => {
-      window.removeEventListener('updated-cart', refresh);
-    };
-  }, []);
-
-  return items;
-}
+export { useCartStore };
