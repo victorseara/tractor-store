@@ -17,7 +17,7 @@
     "serve-checkout": "pnpm --filter=tractor_v2_checkout serve",
     "serve-decide": "pnpm --filter=tractor_v2_decide serve",
     "serve-explore": "pnpm --filter=tractor_v2_explore serve",
-    "serve": "pnpm --filter 'tractor_v2*' serve"
+    "serve": "pnpm --parallel --filter 'tractor_v2*' serve"
   },
   "keywords": [
     "react",
