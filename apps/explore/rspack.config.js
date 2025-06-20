@@ -109,9 +109,9 @@ const config = {
           requiredVersion: deps['react-router-dom'],
         },
       },
-      // remotes: {
-      //   tractor_v2_checkout: 'tractor_v2_checkout@http://localhost:3001/remoteEntry.js',
-      // },
+      remotes: {
+        tractor_v2_shared: 'tractor_v2_shared@http://localhost:3004/remoteEntry.js',
+      },
       exposes: {
         './HomePage': path.resolve(__dirname) + '/src/HomePage.tsx',
         './CategoryPage': path.resolve(__dirname) + '/src/CategoryPage.tsx',
