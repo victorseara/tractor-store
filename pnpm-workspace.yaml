@@ -1,0 +1,24 @@
+packages:
+  - apps/*
+catalogs:
+  zephyr:
+    zephyr-rspack-plugin: ^0.0.53
+  module-federation:
+    "@module-federation/enhanced": ^0.11.2
+    "@module-federation/runtime": ^0.11.2
+  typescript:
+    typescript: ^5.8.2
+    "@types/node": ^22.13.13
+  rspack:
+    "@rspack/cli": ^1.2.8
+    "@rspack/core": ^1.2.8
+    "@rspack/plugin-react-refresh": ^1.0.1
+  react18:
+    react: ^18.3.1
+    react-dom: ^18.3.1
+    react-router: ^6.30.0
+    react-router-dom: ^6.30.0
+    "@types/react": ^18.3.20
+    "@types/react-dom": ^18.3.5
+    "@types/react-router-dom": ^5.3.3
+    react-refresh: ^0.16.0
