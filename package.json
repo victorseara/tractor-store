@@ -8,15 +8,17 @@
     "url": "git+ssh://git@github.com:ZephyrCloudIO/zephyr-examples.git"
   },
   "scripts": {
-    "build": "pnpm build-explore && pnpm build-checkout && pnpm build-decide && pnpm build-app",
+    "build": "pnpm build-explore && pnpm build-checkout && pnpm build-decide && pnpm build-app && pnpm build-shared",
     "build-app": "pnpm --filter=tractor_v2_app build",
     "build-checkout": "pnpm --filter=tractor_v2_checkout build",
     "build-decide": "pnpm --filter=tractor_v2_decide build",
     "build-explore": "pnpm --filter=tractor_v2_explore build",
+    "build-shared": "pnpm --filter=tractor_v2_shared build",
     "serve-app": "pnpm --filter=tractor_v2_app serve",
     "serve-checkout": "pnpm --filter=tractor_v2_checkout serve",
     "serve-decide": "pnpm --filter=tractor_v2_decide serve",
     "serve-explore": "pnpm --filter=tractor_v2_explore serve",
+    "serve-shared": "pnpm --filter=tractor_v2_shared serve",
     "serve": "pnpm --parallel --filter 'tractor_v2*' serve"
   },
   "keywords": [
