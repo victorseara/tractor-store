@@ -10,7 +10,7 @@ export const router = createBrowserRouter([
       <div
         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1em', paddingBottom: '2rem' }}
         data-boundary-page="checkout">
-        <h1>Checkout Remote - Tractor Sample 2.0</h1>
+        <h1>Checkout Cart Remote - Tractor Sample 2.0</h1>
         <h2>Exported Components</h2>
         <MiniCart />
       </div>
