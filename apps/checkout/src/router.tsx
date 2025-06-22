@@ -5,7 +5,6 @@ const CartPage = lazy(() => import('./CartPage'));
 const Checkout = lazy(() => import('./Checkout'));
 const Thanks = lazy(() => import('./Thanks'));
 const AddToCart = lazy(() => import('./AddToCart'));
-const MiniCart = lazy(() => import('./MiniCart'));
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +22,6 @@ export const router = createBrowserRouter([
         </div>
         <h2>Exported Components</h2>
         <AddToCart sku="AU-01-SI" />
-        <MiniCart />
       </div>
     ),
   },
