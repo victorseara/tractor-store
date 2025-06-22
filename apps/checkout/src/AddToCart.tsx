@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import data from './data/db.json';
-import Button from './components/Button';
+import Button from 'tractor_store_v2_ui/Button';
 import './css/AddToCart.css';
 
 type AddToCardProps = {

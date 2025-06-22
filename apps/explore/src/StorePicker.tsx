@@ -1,9 +1,8 @@
 import * as React from 'react';
 import data from './data/db.json';
-import Button from './components/Button';
+import Button from 'tractor_store_v2_ui/Button';
 import { src, srcset } from './js/utils';
 import './css/StorePicker.css';
-import './css/Button.css';
 
 const StorePicker: React.FC = () => {
   const [currentStore, setCurrentStore] = React.useState('');
@@ -28,7 +27,7 @@ const StorePicker: React.FC = () => {
     <div className="e_StorePicker">
       <div className="e_StorePicker_control" data-boundary="explore">
         <div className="e_StorePicker_selected" dangerouslySetInnerHTML={{ __html: currentStore }} />
-        <Button className="e_StorePicker_choose" type="button" onClick={openDialog}>
+        <Button type="button" onClick={openDialog}>
           choose a store
         </Button>
       </div>

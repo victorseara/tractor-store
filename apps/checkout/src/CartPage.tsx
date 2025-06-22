@@ -1,6 +1,6 @@
 import * as React from 'react';
 import LineItem from './components/LineItem';
-import Button from './components/Button';
+import Button from 'tractor_store_v2_ui/Button';
 import data from './data/db.json';
 import { useLineItems } from 'tractor_store_v2_checkout_cart/store';
 import './css/CartPage.css'

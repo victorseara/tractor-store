@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import Button from './Button';
+import Button from 'tractor_store_v2_ui/Button';
 import { src, srcset } from '../js/utils';
 import '../css/LineItem.css';
 

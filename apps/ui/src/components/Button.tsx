@@ -14,6 +14,7 @@ interface ButtonProps {
   size?: string;
   variant?: string;
   title?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export default ({
@@ -28,6 +29,7 @@ export default ({
   size = 'normal',
   variant = 'secondary',
   title,
+  onClick
 }: ButtonProps) => {
   if (href) {
     return (
@@ -35,10 +37,9 @@ export default ({
         to={href}
         data-id={dataId}
         title={title}
-        className={`c_Button c_Button--${variant} ${className} ${
-          rounded ? 'c_Button--rounded' : ''
-        } c_Button--size-${size}`}>
-        <div className="c_Button__inner">{children}</div>
+        className={`Button Button--${variant} ${className} ${rounded ? 'Button--rounded' : ''
+          } Button--size-${size}`}>
+        <div className="Button__inner">{children}</div>
       </Link>
     );
   } else {
@@ -49,10 +50,10 @@ export default ({
         value={value}
         data-id={dataId}
         title={title}
-        className={`c_Button c_Button--${variant} ${className} ${
-          rounded ? 'c_Button--rounded' : ''
-        } c_Button--size-${size}`}>
-        <div className="c_Button__inner">{children}</div>
+        onClick={onClick}
+        className={`Button Button--${variant} ${className} ${rounded ? 'Button--rounded' : ''
+          } Button--size-${size}`}>
+        <div className="Button__inner">{children}</div>
       </button>
     );
   }

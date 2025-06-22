@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from './components/Button';
+import Button from 'tractor_store_v2_ui/Button';
 import { useLineItems } from './data/store';
 import './css/MiniCart.css';
 
