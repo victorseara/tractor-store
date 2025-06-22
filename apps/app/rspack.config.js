@@ -1,5 +1,6 @@
 const rspack = require('@rspack/core');
 const isDev = process.env.NODE_ENV === 'development';
+const emitTypes = process.env.DTS === 'true';
 const refreshPlugin = require('@rspack/plugin-react-refresh');
 
 const path = require('path');
@@ -86,7 +87,7 @@ const config = {
     }),
     new ModuleFederationPlugin({
       name,
-      dts: false,
+      dts: emitTypes,
       filename: 'remoteEntry.js',
       shared: {
         react: {
