@@ -8,7 +8,7 @@
     "url": "git+ssh://git@github.com:ZephyrCloudIO/zephyr-examples.git"
   },
   "scripts": {
-    "build":"pnpm --parallel --filter 'tractor_store_v2'",
+    "build":"pnpm --parallel --filter 'tractor_store_v2*' build",
     "build-app": "pnpm --filter=tractor_store_v2_app build",
     "build-checkout": "pnpm --filter=tractor_store_v2_checkout build",
     "build-decide": "pnpm --filter=tractor_store_v2_decide build",
