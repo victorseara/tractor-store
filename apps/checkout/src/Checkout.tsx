@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CompactHeader from './components/CompactHeader';
-import Button from './components/Button';
+import Button from 'tractor_store_v2_ui/Button';
 import { useNavigate } from 'react-router-dom';
 import './css/Checkout.css';
 

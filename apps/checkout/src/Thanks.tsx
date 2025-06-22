@@ -1,6 +1,6 @@
 import * as React from 'react';
 import confetti from 'canvas-confetti';
-import Button from './components/Button';
+import Button from 'tractor_store_v2_ui/Button';
 import './css/Thanks.css';
 
 const Header = React.lazy(() => import('tractor_store_v2_explore/Header'));

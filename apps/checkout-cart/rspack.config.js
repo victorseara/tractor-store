@@ -110,6 +110,9 @@ const config = {
           requiredVersion: deps['react-router-dom'],
         },
       },
+      remotes: {
+        tractor_store_v2_ui: 'tractor_store_v2_ui@http://localhost:3005/remoteEntry.js',
+      },
       exposes: {
         './store': path.resolve(__dirname) + '/src/data/store.ts',
         './MiniCart': path.resolve(__dirname) + '/src/MiniCart.tsx',
