@@ -13,7 +13,7 @@
     "build-checkout": "pnpm --filter=tractor_store_v2_checkout build",
     "build-decide": "pnpm --filter=tractor_store_v2_decide build",
     "build-explore": "pnpm --filter=tractor_store_v2_explore build",
-    "serve": "pnpm --filter 'tractor_store_v2*' serve"
+    "serve": "pnpm --parallel --filter 'tractor_store_v2*' serve"
   },
   "keywords": [
     "react",
