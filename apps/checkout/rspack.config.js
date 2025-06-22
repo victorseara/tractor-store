@@ -111,13 +111,13 @@ const config = {
       },
       remotes: {
         tractor_store_v2_explore: 'tractor_store_v2_explore@http://localhost:3003/remoteEntry.js',
+        tractor_store_v2_checkout_mini_cart: 'tractor_store_v2_checkout_mini_cart@http://localhost:3004/remoteEntry.js',
       },
       exposes: {
         './CartPage': path.resolve(__dirname) + '/src/CartPage.tsx',
         './Checkout': path.resolve(__dirname) + '/src/Checkout.tsx',
         './Thanks': path.resolve(__dirname) + '/src/Thanks.tsx',
         './AddToCart': path.resolve(__dirname) + '/src/AddToCart.tsx',
-        './MiniCart': path.resolve(__dirname) + '/src/MiniCart.tsx',
       },
     }),
     ...(isDev ? [new refreshPlugin()] : []),

@@ -110,6 +110,7 @@ const config = {
         },
       },
       exposes: {
+        './store': path.resolve(__dirname) + '/src/data/store.ts',
         './MiniCart': path.resolve(__dirname) + '/src/MiniCart.tsx',
       },
     }),

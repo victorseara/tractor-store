@@ -2,7 +2,7 @@ import * as React from 'react';
 import LineItem from './components/LineItem';
 import Button from './components/Button';
 import data from './data/db.json';
-import { useLineItems } from './data/store';
+import { useLineItems } from 'tractor_store_v2_checkout_mini_cart/store';
 import './css/CartPage.css'
 
 const Header = React.lazy(() => import('tractor_store_v2_explore/Header'));
