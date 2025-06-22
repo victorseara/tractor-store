@@ -3,8 +3,8 @@ import confetti from 'canvas-confetti';
 import Button from './components/Button';
 import './css/Thanks.css';
 
-const Header = React.lazy(() => import('tractor_v2_explore/Header'));
-const Footer = React.lazy(() => import('tractor_v2_explore/Footer'));
+const Header = React.lazy(() => import('tractor_store_v2_explore/Header'));
+const Footer = React.lazy(() => import('tractor_store_v2_explore/Footer'));
 
 const settings = {
   particleCount: 3,

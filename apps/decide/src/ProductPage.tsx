@@ -5,10 +5,10 @@ import data from './data/db.json';
 import { src, srcset } from './js/utils';
 import './css/ProductPage.css';
 
-const AddToCart = React.lazy(() => import('tractor_v2_checkout/AddToCart'));
-const Header = React.lazy(() => import('tractor_v2_explore/Header'));
-const Footer = React.lazy(() => import('tractor_v2_explore/Footer'));
-const Recommendations = React.lazy(() => import('tractor_v2_explore/Recommendations'));
+const AddToCart = React.lazy(() => import('tractor_store_v2_checkout/AddToCart'));
+const Header = React.lazy(() => import('tractor_store_v2_explore/Header'));
+const Footer = React.lazy(() => import('tractor_store_v2_explore/Footer'));
+const Recommendations = React.lazy(() => import('tractor_store_v2_explore/Recommendations'));
 
 function useSku() {
   const [sku, setSku] = React.useState(() => new URL(location.href).searchParams.get('sku'));

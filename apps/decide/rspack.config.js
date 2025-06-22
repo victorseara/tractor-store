@@ -7,7 +7,7 @@ const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack')
 const { withZephyr } = require('zephyr-rspack-plugin');
 const { dependencies: deps } = require('../../package.json');
 
-const name = 'tractor_v2_decide';
+const name = 'tractor_store_v2_decide';
 
 /**
  * @type {import('@rspack/cli').Configuration}
@@ -110,8 +110,8 @@ const config = {
         },
       },
       remotes: {
-        tractor_v2_checkout: 'tractor_v2_checkout@http://localhost:3001/remoteEntry.js',
-        tractor_v2_explore: 'tractor_v2_explore@http://localhost:3003/remoteEntry.js',
+        tractor_store_v2_checkout: 'tractor_store_v2_checkout@http://localhost:3001/remoteEntry.js',
+        tractor_store_v2_explore: 'tractor_store_v2_explore@http://localhost:3003/remoteEntry.js',
       },
       exposes: {
         './ProductPage': path.resolve(__dirname) + '/src/ProductPage.tsx',

@@ -5,9 +5,9 @@ import data from './data/db.json';
 import { useLineItems } from './data/store';
 import './css/CartPage.css'
 
-const Header = React.lazy(() => import('tractor_v2_explore/Header'));
-const Footer = React.lazy(() => import('tractor_v2_explore/Footer'));
-const Recommendations = React.lazy(() => import('tractor_v2_explore/Recommendations'));
+const Header = React.lazy(() => import('tractor_store_v2_explore/Header'));
+const Footer = React.lazy(() => import('tractor_store_v2_explore/Footer'));
+const Recommendations = React.lazy(() => import('tractor_store_v2_explore/Recommendations'));
 
 function convertToLineItems(items: Array<{ sku: string; quantity: number }>) {
   return items.reduce((res, { sku, quantity }) => {

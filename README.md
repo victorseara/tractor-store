@@ -67,7 +67,7 @@ In the [rspack.config.ts of `explore`](./apps/explore/rspack.config.js), comment
       filename: 'remoteEntry.js',
       shared: ['react', 'react-dom', 'react-router', 'react-router-dom'],
       // remotes: {
-      //   tractor_v2_checkout: 'tractor_v2_checkout@http://localhost:3001/remoteEntry.js',
+      //   tractor_store_v2_checkout: 'tractor_store_v2_checkout@http://localhost:3001/remoteEntry.js',
       // },
       exposes: {
         './HomePage': path.resolve(__dirname) + '/src/HomePage.tsx',
@@ -84,7 +84,7 @@ In the [rspack.config.ts of `explore`](./apps/explore/rspack.config.js), comment
 and run 
 
 ```
-WITH_ZE=true pnpm --filter tractor_v2_explore run build
+WITH_ZE=true pnpm --filter tractor_store_v2_explore run build
 ```
 
 2. Build `checkout` app 
@@ -92,7 +92,7 @@ WITH_ZE=true pnpm --filter tractor_v2_explore run build
 At this point `explore` app has been build and `checkout` app is only consuming `explore`, we build the `checkout` app next: 
 
 ```sh 
-WITH_ZE=true pnpm --filter tractor_v2_checkout run build
+WITH_ZE=true pnpm --filter tractor_store_v2_checkout run build
 ```
 
 3. Uncomment `checkout` in `explore` app 
@@ -106,7 +106,7 @@ new ModuleFederationPlugin({
       filename: 'remoteEntry.js',
       shared: ['react', 'react-dom', 'react-router', 'react-router-dom'],
        remotes: {
-         tractor_v2_checkout: 'tractor_v2_checkout@http://localhost:3001/remoteEntry.js',
+         tractor_store_v2_checkout: 'tractor_store_v2_checkout@http://localhost:3001/remoteEntry.js',
        },
       exposes: {
         './HomePage': path.resolve(__dirname) + '/src/HomePage.tsx',
@@ -121,7 +121,7 @@ new ModuleFederationPlugin({
 ```
 
 ```sh 
-WITH_ZE=true pnpm --filter tractor_v2_explore run build
+WITH_ZE=true pnpm --filter tractor_store_v2_explore run build
 ```
 
 4. Build `decide` 
@@ -129,7 +129,7 @@ WITH_ZE=true pnpm --filter tractor_v2_explore run build
 Since `explore` and `checkout` are both being built, you can run this command to build `decide` (`decide` consumes `explore` and `checkout`, they are both built at this point ): 
 
 ```sh 
-WITH_ZE=true pnpm --filter tractor_v2_decide run build
+WITH_ZE=true pnpm --filter tractor_store_v2_decide run build
 ```
 
 5. Build `app` 
@@ -137,7 +137,7 @@ WITH_ZE=true pnpm --filter tractor_v2_decide run build
 All the remotes are being built now and Zephyr will be able to map your remote application in output bundle, you can build `app` directly by running: 
 
 ```sh 
-WITH_ZE=true pnpm --filter tractor_v2_app run build
+WITH_ZE=true pnpm --filter tractor_store_v2_app run build
 ```
 
 

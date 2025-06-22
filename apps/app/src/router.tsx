@@ -2,13 +2,13 @@ import React, { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { createBrowserRouter } from 'react-router-dom';
 
-const Home = lazy(() => import('tractor_v2_explore/HomePage'));
-const CategoryPage = lazy(() => import('tractor_v2_explore/CategoryPage'));
-const StoresPage = lazy(() => import('tractor_v2_explore/StoresPage'));
-const CartPage = lazy(() => import('tractor_v2_checkout/CartPage'));
-const Checkout = lazy(() => import('tractor_v2_checkout/Checkout'));
-const Thanks = lazy(() => import('tractor_v2_checkout/Thanks'));
-const ProductPage = lazy(() => import('tractor_v2_decide/ProductPage'));
+const Home = lazy(() => import('tractor_store_v2_explore/HomePage'));
+const CategoryPage = lazy(() => import('tractor_store_v2_explore/CategoryPage'));
+const StoresPage = lazy(() => import('tractor_store_v2_explore/StoresPage'));
+const CartPage = lazy(() => import('tractor_store_v2_checkout/CartPage'));
+const Checkout = lazy(() => import('tractor_store_v2_checkout/Checkout'));
+const Thanks = lazy(() => import('tractor_store_v2_checkout/Thanks'));
+const ProductPage = lazy(() => import('tractor_store_v2_decide/ProductPage'));
 
 export const router = createBrowserRouter([
   {
