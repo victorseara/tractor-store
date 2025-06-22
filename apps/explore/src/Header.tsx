@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import './css/Header.css';
 
-const MiniCart = React.lazy(() => import('tractor_store_v2_checkout_mini_cart/MiniCart'));
+const MiniCart = React.lazy(() => import('tractor_store_v2_checkout_cart/MiniCart'));
 
 const Header = () => {
   return (

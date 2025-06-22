@@ -1,5 +1,5 @@
 {
-  "name": "tractor_store_v2_checkout_mini_cart",
+  "name": "tractor_store_v2_checkout_cart",
   "version": "1.0.0",
   "scripts": {
     "serve": "NODE_ENV=development rspack serve",

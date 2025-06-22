@@ -7,7 +7,7 @@ const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack')
 const { withZephyr } = require('zephyr-rspack-plugin');
 const { dependencies: deps } = require('../../package.json');
 
-const name = 'tractor_store_v2_checkout_mini_cart';
+const name = 'tractor_store_v2_checkout_cart';
 
 /**
  * @type {import('@rspack/cli').Configuration}
