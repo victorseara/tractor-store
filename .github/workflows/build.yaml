@@ -3,8 +3,6 @@ on: [push, pull_request, workflow_dispatch ]
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      ZE_SECRET_TOKEN: ${{ secrets.ZEPHYR_AUTH_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,6 +21,32 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
+      
       - name: Build apps
-        run: WITH_ZE=true pnpm build
+        id: buildRemote
+        run: |
+          OUTPUT=$(WITH_ZE=true pnpm build)
+          echo "$OUTPUT"
+          URL=$(echo "$OUTPUT" | grep -oE 'https://[^ ]+')
+          HOST=$(echo "$OUTPUT" | grep -oP 'ZEPHYR\s+\K\S+(?=#)')
+          echo "Extracted Host Zephyr URL: $URL"
+          echo "Extracted Host: $HOST"
+          echo "host=$HOST" >> "$GITHUB_OUTPUT"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Playwright
+        run: pnpm exec playwright install --with-deps
+
+      - name: Run e2e tests
+        run: pnpm test
+ 
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+    env:
+      ZE_SECRET_TOKEN: ${{ secrets.ZEPHYR_AUTH_TOKEN }}
+      REMOTE_URL: ${{ steps.buildRemote.outputs.remoteUrl }}
+      REMOTE: ${{ steps.buildRemote.outputs.remote }}

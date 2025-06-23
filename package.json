@@ -8,12 +8,14 @@
     "url": "git+ssh://git@github.com:ZephyrCloudIO/zephyr-examples.git"
   },
   "scripts": {
-    "build":"pnpm --parallel --filter 'tractor_store_v2*' build",
+    "build": "pnpm --parallel --filter 'tractor_store_v2*' build",
     "build-app": "pnpm --filter=tractor_store_v2_app build",
     "build-checkout": "pnpm --filter=tractor_store_v2_checkout build",
     "build-decide": "pnpm --filter=tractor_store_v2_decide build",
     "build-explore": "pnpm --filter=tractor_store_v2_explore build",
-    "serve": "pnpm --parallel --filter 'tractor_store_v2*' serve"
+    "serve": "pnpm --parallel --filter 'tractor_store_v2*' serve",
+    "test": "pnpm exec playwright test",
+    "test:ui": "pnpm exec playwright test --ui"
   },
   "keywords": [
     "react",
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "@module-federation/enhanced": "catalog:module-federation",
+    "@playwright/test": "^1.53.1",
     "@rspack/cli": "catalog:rspack",
     "@rspack/core": "catalog:rspack",
     "@rspack/plugin-react-refresh": "catalog:rspack",
@@ -43,6 +46,7 @@
     "@types/node": "catalog:typescript",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.5",
+    "dotenv": "^16.5.0",
     "react-refresh": "catalog:react18",
     "typescript": "catalog:typescript",
     "zephyr-rspack-plugin": "catalog:zephyr"
