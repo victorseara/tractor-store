@@ -114,6 +114,7 @@ const config = {
         tractor_store_v2_explore: 'tractor_store_v2_explore@http://localhost:3003/remoteEntry.js',
         tractor_store_v2_checkout_cart: 'tractor_store_v2_checkout_cart@http://localhost:3004/remoteEntry.js',
         tractor_store_v2_ui: 'tractor_store_v2_ui@http://localhost:3005/remoteEntry.js',
+        tractor_store_v2_inspire: 'tractor_store_v2_inspire@http://localhost:3006/remoteEntry.js',
       },
       exposes: {
         './CartPage': path.resolve(__dirname) + '/src/CartPage.tsx',

@@ -7,7 +7,7 @@ import './css/CartPage.css'
 
 const Header = React.lazy(() => import('tractor_store_v2_explore/Header'));
 const Footer = React.lazy(() => import('tractor_store_v2_explore/Footer'));
-const Recommendations = React.lazy(() => import('tractor_store_v2_explore/Recommendations'));
+const Recommendations = React.lazy(() => import('tractor_store_v2_inspire/Recommendations'));
 
 function convertToLineItems(items: Array<{ sku: string; quantity: number }>) {
   return items.reduce((res, { sku, quantity }) => {
@@ -24,7 +24,7 @@ const CartPage: React.FC = () => {
   const lineItems = convertToLineItems(rawLineItems);
   const total = lineItems.reduce((res, { total }) => res + total, 0);
   const skus = lineItems.map(({ sku }) => sku);
-  
+
   return (
     <div data-boundary-page="checkout">
       <Header />
