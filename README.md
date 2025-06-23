@@ -1,49 +1,27 @@
-# Tractor 2.0 + Rspack + MF + Zephyr Sample
+# Tractor Store 
 
+A micro front-end implementation of [The Tractor Store](https://micro-frontends.org/tractor-store/), created from the [Zephyr's example](https://github.com/ZephyrCloudIO/zephyr-examples/tree/main/examples/react-rspack-tractor-2.0) to showcase Module Federation + Zephyr integration.
 
-A micro frontends sample implementation of [The Tractor Store](https://micro-frontends.org/tractor-store/) built with Module Federation and React. It's based on the [Piral version](https://github.com/piral-samples/tractor-v2).
-
-**Live Demo:** TODO
+**Live Demo:** [Tractor Store](https://t-latest-tractor-store-v2-app-tractor-store-victorseara-ze.zephyrcloud.app)
 
 ## About This Implementation
+The example was choose because it includes real-world requirements and common challenges faced while implementing a micro front-end architecture, allowing open-ended conversations about several topics and technologies involved in the process. 
 
-### Technologies
+We tried to solve a [few limitations](https://github.com/ZephyrCloudIO/zephyr-examples/tree/main/examples/react-rspack-tractor-2.0#limitations) mentioned by the original authors and expand the example with the ideas proposed by the author in the [challenge presentation](https://www.youtube.com/watch?v=12TN7Zq7VxM&t=132s). 
 
-List of techniques used in this implementation.
+You can learn more about the challenge by visiting [micro-frontends.org](https://micro-frontends.org/tractor-store/) and about the implementation details in [Zephyr's implementaiton](https://github.com/ZephyrCloudIO/zephyr-examples/tree/main/examples/react-rspack-tractor-2.0#limitations).
 
-| Aspect                     | Solution                                  |
-| -------------------------- | ----------------------------------------- |
-| 🛠️ Frameworks, Libraries   | [React], [Module Federation], [Rspack]    |
-| 📝 Rendering               | SPA                                       |
-| 🐚 Application Shell       | react-router                              |
-| 🧩 Client-Side Integration | Module Federation                         |
-| 🧩 Server-Side Integration | *none*                                    |
-| 📣 Communication           | Custom Events, Slots                      |
-| 🗺️ Navigation              | SPA, One MF per Team, react-router        |
-| 🎨 Styling                 | Self-Contained CSS (No Global Styles)     |
-| 🍱 Design System           | None                                      |
-| 🔮 Discovery               | [Zephyr Cloud]                            |
-| 🚚 Deployment              | Static Page                               |
-| 👩‍💻 Local Development       | Rspack's devServer                        |
-
-[React]: https://react.dev/
-[Module Federation]: https://module-federation.io/
-[Rspack]: https://rspack.dev/
-[Zephyr Cloud]: https://zephyr-cloud.io/
-
-### Limitations
-
-This implementation is deliberately kept simple to focus on the micro frontends aspects. URLs are hardcoded, components could be more DRY and no linting, testing or type-safety is implemented. In a real-world scenario, these aspects should be addressed properly.
-
-### Performance
-
-Several performance optimizations could still be applied, however, in the out-of-the-box state with three micro frontends and multiple components / pages included we'll end up with a lighthouse score of 100/100, which is great.
-
-## How to run locally
+### Implemented changes
+- [ci: added build and deploy pipeline](https://github.com/victorseara/tractor-store/blob/main/.github/workflows/build.yaml): added a simple pipeline to build, test and deploy the applications to Zephyr;
+- [feat(checkout): add cart remote](https://github.com/victorseara/tractor-store/pull/1): added a new remote for the checkout team to share the `MiniCart` component breaking circular dependency between `checkout` and `explore` teams;
+- [build: enable typescript generation in rspack config](https://github.com/victorseara/tractor-store/pull/2): enable typescript generation for remotes;
+- [feat: add component library](https://github.com/victorseara/tractor-store/pull/3): added a new remote to share common UI elements;
+- [tests: add playwright and setup a basic test for recommendations section](https://github.com/victorseara/tractor-store/pull/4): added tests to support the creation of Team inspire remote;
+- [feat(inspire): add inspire remote](https://github.com/victorseara/tractor-store/pull/5): extract the Recommendations feature from `explore` and added to a new remote owned by the `inspire` team;
 
 ### Installation
 
-**Fork** this repository. Then use `pnpm` to bootstrap the mono repo. Make sure to have `pnpm` (v9) installed for this.
+**Fork** this repository. Then use `pnpm` to bootstrap the mono repo. Make sure to have `pnpm` >= v9 installed for this.
 
 Run the following command inside the repository:
 
@@ -53,93 +31,11 @@ pnpm install
 
 ### Running the Code
 
-1. Build the `explore` app first 
+Build and serve the application with `DTS` enabled to set up the development environment: 
 
-Because this project has recursive dependencies, you must comment out remotes that's yet build, and build the remotes first -- otherwise Zephyr won't be able to map your remotes against your host applications (or the application consumes it).
-
-Note that each `build` command will trigger a deployment with Zephyr. 
-
-In the [rspack.config.ts of `explore`](./apps/explore/rspack.config.js), comment out the remotes (it's not built yet):
-
-```ts
- new ModuleFederationPlugin({
-      name,
-      filename: 'remoteEntry.js',
-      shared: ['react', 'react-dom', 'react-router', 'react-router-dom'],
-      // remotes: {
-      //   tractor_store_v2_checkout: 'tractor_store_v2_checkout@http://localhost:3001/remoteEntry.js',
-      // },
-      exposes: {
-        './HomePage': path.resolve(__dirname) + '/src/HomePage.tsx',
-        './CategoryPage': path.resolve(__dirname) + '/src/CategoryPage.tsx',
-        './StoresPage': path.resolve(__dirname) + '/src/StoresPage.tsx',
-        './Recommendations': path.resolve(__dirname) + '/src/Recommendations.tsx',
-        './StorePicker': path.resolve(__dirname) + '/src/StorePicker.tsx',
-        './Header': path.resolve(__dirname) + '/src/Header.tsx',
-        './Footer': path.resolve(__dirname) + '/src/Footer.tsx',
-      },
-    }),
-```
-
-and run 
-
-```
-WITH_ZE=true pnpm --filter tractor_store_v2_explore run build
-```
-
-2. Build `checkout` app 
-
-At this point `explore` app has been build and `checkout` app is only consuming `explore`, we build the `checkout` app next: 
-
-```sh 
-WITH_ZE=true pnpm --filter tractor_store_v2_checkout run build
-```
-
-3. Uncomment `checkout` in `explore` app 
-
-Run explore app's build again to build it to a full app, but uncomment the remotes in configuration file: 
-
-```ts
-
-new ModuleFederationPlugin({
-      name,
-      filename: 'remoteEntry.js',
-      shared: ['react', 'react-dom', 'react-router', 'react-router-dom'],
-       remotes: {
-         tractor_store_v2_checkout: 'tractor_store_v2_checkout@http://localhost:3001/remoteEntry.js',
-       },
-      exposes: {
-        './HomePage': path.resolve(__dirname) + '/src/HomePage.tsx',
-        './CategoryPage': path.resolve(__dirname) + '/src/CategoryPage.tsx',
-        './StoresPage': path.resolve(__dirname) + '/src/StoresPage.tsx',
-        './Recommendations': path.resolve(__dirname) + '/src/Recommendations.tsx',
-        './StorePicker': path.resolve(__dirname) + '/src/StorePicker.tsx',
-        './Header': path.resolve(__dirname) + '/src/Header.tsx',
-        './Footer': path.resolve(__dirname) + '/src/Footer.tsx',
-      },
-    }),
-```
-
-```sh 
-WITH_ZE=true pnpm --filter tractor_store_v2_explore run build
-```
-
-4. Build `decide` 
-
-Since `explore` and `checkout` are both being built, you can run this command to build `decide` (`decide` consumes `explore` and `checkout`, they are both built at this point ): 
-
-```sh 
-WITH_ZE=true pnpm --filter tractor_store_v2_decide run build
-```
-
-5. Build `app` 
-
-All the remotes are being built now and Zephyr will be able to map your remote application in output bundle, you can build `app` directly by running: 
-
-```sh 
-WITH_ZE=true pnpm --filter tractor_store_v2_app run build
-```
-
+```sh
+DTS=true pnpm build && DTS=true pnpm serve
+``` 
 
 
 ### Deploy to Zephyr Cloud
@@ -157,7 +53,3 @@ WITH_ZE=true pnpm serve
 ##### We have now deployed everything! You can open our [Chrome Extension](https://chromewebstore.google.com/detail/zephyr-mission-control/liflhldchhinbaeplljlplhnbkdidedn), 
 
 Select this application on  Chrome Extension, toggle on `Live reload` to inspect file changes while running `WITH_ZE=true pnpm serve` 
-
-## More Information
-
-The [Piral documentation page](https://docs.piral.io/guidelines/tutorials/23-monorepo) has a tutorial on the sample that this example was based on. Make sure to follow and understand the tutorial before going deep into this sample.
