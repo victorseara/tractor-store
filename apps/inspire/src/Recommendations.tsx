@@ -38,7 +38,7 @@ function recosForSkus(skus: Array<string>, length = 4) {
 const Recommendations: React.FC<{ skus: Array<string> }> = ({ skus }) => {
   const recos = recosForSkus(skus);
   return recos.length ? (
-    <div className="e_Recommendations" data-boundary="explore" data-testid="recommendations-container" data-recommendations-for={skus}>
+    <div className="e_Recommendations" data-boundary="inspire" data-testid="recommendations-container" data-recommendations-for={skus}>
       <h2>Recommendations</h2>
       <ul className="e_Recommendations_list">
         {recos.map((reco, i) => (

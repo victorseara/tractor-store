@@ -8,7 +8,7 @@ const { ModuleFederationPlugin } = require('@module-federation/enhanced/rspack')
 const { withZephyr } = require('zephyr-rspack-plugin');
 const { dependencies: deps } = require('../../package.json');
 
-const name = 'tractor_store_v2_checkout';
+const name = 'tractor_store_v2_inspire';
 
 /**
  * @type {import('@rspack/cli').Configuration}
@@ -18,7 +18,7 @@ const config = {
   resolve: { extensions: ['...', '.ts', '.tsx', '.jsx'] },
   optimization: { minimize: false, sideEffects: true },
   devServer: {
-    port: 3001,
+    port: 3006,
     static: { directory: path.join(__dirname, 'build') },
     liveReload: false,
     headers: {
@@ -110,17 +110,8 @@ const config = {
           requiredVersion: deps['react-router-dom'],
         },
       },
-      remotes: {
-        tractor_store_v2_explore: 'tractor_store_v2_explore@http://localhost:3003/remoteEntry.js',
-        tractor_store_v2_checkout_cart: 'tractor_store_v2_checkout_cart@http://localhost:3004/remoteEntry.js',
-        tractor_store_v2_ui: 'tractor_store_v2_ui@http://localhost:3005/remoteEntry.js',
-        tractor_store_v2_inspire: 'tractor_store_v2_inspire@http://localhost:3006/remoteEntry.js',
-      },
       exposes: {
-        './CartPage': path.resolve(__dirname) + '/src/CartPage.tsx',
-        './Checkout': path.resolve(__dirname) + '/src/Checkout.tsx',
-        './Thanks': path.resolve(__dirname) + '/src/Thanks.tsx',
-        './AddToCart': path.resolve(__dirname) + '/src/AddToCart.tsx',
+        './Recommendations': path.resolve(__dirname) + '/src/Recommendations.tsx',
       },
     }),
     ...(isDev ? [new refreshPlugin()] : []),

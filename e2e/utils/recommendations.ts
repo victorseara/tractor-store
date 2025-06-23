@@ -13,6 +13,10 @@ export class Recommendations {
         return this.container.getAttribute("data-recommendations-for");
     }
 
+    async getDataBoundary() {
+        return this.container.getAttribute("data-boundary");
+    }
+
     async getListItems() {
         const recommendations = await this.container.getByRole("listitem").all();
         return recommendations.map(item => ({

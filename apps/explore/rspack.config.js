@@ -113,12 +113,12 @@ const config = {
       remotes: {
         tractor_store_v2_checkout_cart: 'tractor_store_v2_checkout_cart@http://localhost:3004/remoteEntry.js',
         tractor_store_v2_ui: 'tractor_store_v2_ui@http://localhost:3005/remoteEntry.js',
+        tractor_store_v2_inspire: 'tractor_store_v2_inspire@http://localhost:3006/remoteEntry.js',
       },
       exposes: {
         './HomePage': path.resolve(__dirname) + '/src/HomePage.tsx',
         './CategoryPage': path.resolve(__dirname) + '/src/CategoryPage.tsx',
         './StoresPage': path.resolve(__dirname) + '/src/StoresPage.tsx',
-        './Recommendations': path.resolve(__dirname) + '/src/Recommendations.tsx',
         './StorePicker': path.resolve(__dirname) + '/src/StorePicker.tsx',
         './Header': path.resolve(__dirname) + '/src/Header.tsx',
         './Footer': path.resolve(__dirname) + '/src/Footer.tsx',
