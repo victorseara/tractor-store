@@ -31,4 +31,10 @@ test.describe("Recommendation List", () => {
         await product.link.click();
         await page.waitForURL(productLink!);
     })
+
+    test("should show list from inspire team", async ({ page }) => {
+        const recommendations = new Recommendations(page);
+        const teamBoundary = await recommendations.getDataBoundary();
+        expect(teamBoundary).toBe("inspire");
+    })
 })
