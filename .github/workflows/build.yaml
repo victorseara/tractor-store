@@ -3,6 +3,8 @@ on: [push, pull_request, workflow_dispatch ]
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ZE_SECRET_TOKEN: ${{ secrets.ZEPHYR_AUTH_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,6 +41,9 @@ jobs:
 
       - name: Run e2e tests
         run: pnpm test
+        env:
+          REMOTE_URL: ${{ steps.buildRemote.outputs.url }}
+          REMOTE: ${{ steps.buildRemote.outputs.host }}
  
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
@@ -46,7 +51,3 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
-    env:
-      ZE_SECRET_TOKEN: ${{ secrets.ZEPHYR_AUTH_TOKEN }}
-      REMOTE_URL: ${{ steps.buildRemote.outputs.remoteUrl }}
-      REMOTE: ${{ steps.buildRemote.outputs.remote }}
