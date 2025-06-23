@@ -18,6 +18,7 @@
   },
   "zephyr:dependencies": {
     "tractor_store_v2_checkout": "zephyr:tractor_store_v2_checkout@*",
-    "tractor_store_v2_explore": "zephyr:tractor_store_v2_explore@*"
+    "tractor_store_v2_explore": "zephyr:tractor_store_v2_explore@*",
+    "tractor_store_v2_inspire": "zephyr:tractor_store_v2_inspire_cart@*"
   }
 }

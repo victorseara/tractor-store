@@ -113,6 +113,7 @@ const config = {
       remotes: {
         tractor_store_v2_checkout: 'tractor_store_v2_checkout@http://localhost:3001/remoteEntry.js',
         tractor_store_v2_explore: 'tractor_store_v2_explore@http://localhost:3003/remoteEntry.js',
+        tractor_store_v2_inspire: 'tractor_store_v2_inspire@http://localhost:3006/remoteEntry.js',
       },
       exposes: {
         './ProductPage': path.resolve(__dirname) + '/src/ProductPage.tsx',

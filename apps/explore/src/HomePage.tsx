@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import data from './data/db.json';
 import { src, srcset } from './js/utils';
 import Header from './Header';
-import Recommendations from 'tractor_store_v2_inspire/Recommendations';
 import Footer from './Footer';
 import './css/HomePage.css';
+
+const Recommendations = React.lazy(() => import('tractor_store_v2_inspire/Recommendations'));
 
 const HomePage = () => {
   console.log('------------ data from HomePage: ', data);
