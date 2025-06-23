@@ -24,7 +24,7 @@ const CartPage: React.FC = () => {
   const lineItems = convertToLineItems(rawLineItems);
   const total = lineItems.reduce((res, { total }) => res + total, 0);
   const skus = lineItems.map(({ sku }) => sku);
-
+  
   return (
     <div data-boundary-page="checkout">
       <Header />

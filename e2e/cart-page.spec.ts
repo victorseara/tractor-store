@@ -10,7 +10,6 @@ test.describe("Recommendation List", () => {
     test("show recommendation items in a list", async ({ page }) => {
         const recommendations = new Recommendations(page);
         const items = await recommendations.getListItems();
-
         await recommendations.assertOnListItems(items);
         expect(items).toHaveLength(Recommendations.DEFAULT_LIST_SIZE);
     });
