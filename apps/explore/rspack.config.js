@@ -119,7 +119,6 @@ const config = {
         './HomePage': path.resolve(__dirname) + '/src/HomePage.tsx',
         './CategoryPage': path.resolve(__dirname) + '/src/CategoryPage.tsx',
         './StoresPage': path.resolve(__dirname) + '/src/StoresPage.tsx',
-        './Recommendations': path.resolve(__dirname) + '/src/Recommendations.tsx',
         './StorePicker': path.resolve(__dirname) + '/src/StorePicker.tsx',
         './Header': path.resolve(__dirname) + '/src/Header.tsx',
         './Footer': path.resolve(__dirname) + '/src/Footer.tsx',
