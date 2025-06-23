@@ -23,6 +23,33 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
+      
       - name: Build apps
-        run: WITH_ZE=true pnpm build
+        id: buildRemote
+        run: |
+          OUTPUT=$(WITH_ZE=true pnpm build)
+          echo "$OUTPUT"
+          # Extract the URL for the app root
+          URL=$(echo "$OUTPUT" | grep -oE 'https://[^ ]*tractor-store-v2-app[^ ]*')
+          # Extract the host for the app root
+          HOST=$(echo "$OUTPUT" | grep -oP 'ZEPHYR\s+\Ktractor-store-v2-app\S+(?=#)')
+          echo "Extracted Host Zephyr URL: $URL"
+          echo "Extracted Host: $HOST"
+          echo "host=$HOST" >> "$GITHUB_OUTPUT"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Playwright
+        run: pnpm exec playwright install --with-deps
+
+      - name: Run e2e tests
+        run: pnpm test
+        env:
+          REMOTE_URL: ${{ steps.buildRemote.outputs.url }}
+          REMOTE: ${{ steps.buildRemote.outputs.host }}
+ 
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

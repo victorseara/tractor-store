@@ -1,5 +1,6 @@
 packages:
   - apps/*
+  - tests
 catalogs:
   zephyr:
     zephyr-rspack-plugin: ^0.0.53

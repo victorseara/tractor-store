@@ -23,14 +23,14 @@ function colorDistance(rgb1: [number, number, number], rgb2: [number, number, nu
 function recosForSkus(skus: Array<string>, length = 4) {
   const targetRgb = averageColor(skusToColors(skus));
   let distances = [];
-
+  
   for (let sku in r) {
     if (!skus.includes(sku)) {
       const distance = colorDistance(targetRgb, r[sku].rgb);
       distances.push({ sku, distance });
     }
   }
-
+  
   distances.sort((a, b) => a.distance - b.distance);
   return distances.slice(0, length).map((d) => r[d.sku]);
 }
@@ -38,7 +38,7 @@ function recosForSkus(skus: Array<string>, length = 4) {
 const Recommendations: React.FC<{ skus: Array<string> }> = ({ skus }) => {
   const recos = recosForSkus(skus);
   return recos.length ? (
-    <div className="e_Recommendations" data-boundary="explore">
+    <div className="e_Recommendations" data-boundary="explore" data-testid="recommendations-container" data-recommendations-for={skus}>
       <h2>Recommendations</h2>
       <ul className="e_Recommendations_list">
         {recos.map((reco, i) => (
