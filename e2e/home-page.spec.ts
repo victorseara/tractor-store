@@ -6,6 +6,7 @@ const DEFAULT_RECOMMENDATIONS = ['CL-01-GY', 'AU-07-MT'];
 test.describe("Recommendation List", () => {
     test.beforeEach(async ({ page }) => {
         await page.goto("/");
+        await expect(page.getByText(/loading/i)).not.toBeVisible();
     })
 
     test("show recommendation items in a list", async ({ page }) => {

@@ -6,6 +6,7 @@ const PRODUCT_SKU = 'CL-08';
 test.describe("Recommendation List", () => {
     test.beforeEach(async ({ page }) => {
         await page.goto(`/product/${PRODUCT_SKU}`);
+        await expect(page.getByText(/loading/i)).not.toBeVisible();
     })
 
     test("show similar products in a list", async ({ page }) => {
